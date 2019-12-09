@@ -18,5 +18,4 @@ washington.csv
 https://docs.python.org/3/library/index.html
 https://docs.scipy.org/doc/numpy/reference/
 https://pandas.pydata.org/pandas-docs/stable/user_guide/
-
-
+https://stackoverflow.com/
