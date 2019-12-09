@@ -13,12 +13,12 @@ def dict_dataset():
             (dict): dict_dst - dictionary of the datasets used in the program
     """
     # dictionary of datasets
-    dict_dst = { 
+    dict_dts = { 
         'chicago': 'chicago.csv',
         'new york city': 'new_york_city.csv',
         'washington': 'washington.csv' 
     }
-    return dict_dst
+    return dict_dts
     
 
 def raw_data():
