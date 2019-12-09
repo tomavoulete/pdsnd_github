@@ -67,6 +67,73 @@ def raw_data():
         print('\n')
                   
 
+CITY_DATA = { 'chicago': 'chicago.csv',
+              'new york city': 'new_york_city.csv',
+              'washington': 'washington.csv' }
+
+
+def dict_dataset():
+    """
+        Containing the datasets used in the program
+        
+        Return: 
+            (dict): dict_dst - dictionary of the datasets used in the program
+    """
+    # dictionary of datasets
+    dict_dts = { 
+        'chicago': 'chicago.csv',
+        'new york city': 'new_york_city.csv',
+        'washington': 'washington.csv' 
+    }
+    return dict_dts
+    
+
+def raw_data():
+    """ 
+        Raw data is displayed upon request by the user in this manner: 
+            A prompt asks the user to enter a city to see its raw data or 'q' to quit this option.
+            If correct city is entered 5 lines of raw data is displayed and the user is asked
+            to enter y(yes) or n(no) if he/she wants to see 5 more lines of raw data, 
+            and the prompt continues to ask and displays until the user says 'n/no'.
+    """
+    try: 
+        print('Hello! Let\'s see some US cities\' bikeshare raw data!')
+
+        # list of cities
+        list_city = ['chicago', 'new york city', 'washington']
+
+        while True: 
+            city = (input('Enter city[chicago, new york city, washington] to see its raw data or \'q\' to quit this option: ')).lower()
+            if city not in list_city and city == 'q':
+                break
+            elif city not in list_city:
+                print('Sorry, incorrect city. Try again!')
+            else:
+                # dictionary of datasets
+                dict_dts = dict_dataset()
+                # Load file into a dataframe
+                df = pd.read_csv(dict_dts[city])
+                # number of row in the dataframe
+                num_row = df.shape[0]
+                # number of line to display
+                nline = 5
+                print(df.head(nline))
+                while True:
+                    see_more = (input('Press y(yes) to see more of this dataset or n(no) to quit: ')).lower()
+                    if see_more == 'y' or see_more == 'yes':
+                        print(df[nline:nline+5])
+                        nline += 5
+                    elif see_more == 'n' or see_more == 'no':
+                        break
+                    else:
+                        print('Sorry, incorrect response. Try again!')
+    except (ValueError, KeyboardInterrupt): 
+        print('\nSorry, invalid input!\n')
+    else: 
+        print('-'*40)
+        print('\n')
+                  
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
